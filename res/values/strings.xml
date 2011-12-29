@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World!</string>
+    <string name="app_name">URLImageWidget</string>
+    <string name="add_widget">Add Widget</string>
+    <string name="default_url">http://dl.dropbox.com/s/16qohdvaig12o86/droid.png</string>
+    <string name="img_content_description">URLImageWidget image area</string>
+
+</resources>
