@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textUri"
-        android:text="@+string/default_url" >
+        android:text="@string/default_url" >
 
         <requestFocus />
     </EditText>
@@ -19,6 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="addWidget"
-        android:text="@+string/add_widget" />
+        android:text="@string/add_widget" />
 
 </LinearLayout>
