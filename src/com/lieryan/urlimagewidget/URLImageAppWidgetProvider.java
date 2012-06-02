@@ -1,5 +1,7 @@
 package com.lieryan.urlimagewidget;
 
+import java.io.InputStream;
+
 import com.lieryan.urlimagewidget.R;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -16,6 +18,7 @@ public class URLImageAppWidgetProvider extends AppWidgetProvider {
 	public static class Size_1_2 extends URLImageAppWidgetProvider {}
 	public static class Size_1_4 extends URLImageAppWidgetProvider {}
 	public static class Size_2_2 extends URLImageAppWidgetProvider {}
+	public static class Size_4_4 extends URLImageAppWidgetProvider {}
 	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -59,7 +62,15 @@ public class URLImageAppWidgetProvider extends AppWidgetProvider {
 	
     private static Bitmap getBitmapFromUrl(final String url) {
     	try {
-    		return BitmapFactory.decodeStream(((java.io.InputStream)new java.net.URL(url).getContent()));
+    		InputStream stream = (InputStream) new java.net.URL(url).getContent();
+//    		if (stream.markSupported()) {
+//    			byte[] buffer = new byte[64000];
+//	    		stream.mark(64000);
+//	    		stream.read(buffer);
+//	    		System.out.println(buffer);
+//	    		stream.reset();
+//    		}
+    		return BitmapFactory.decodeStream(stream);
     	} catch (Exception e) {
     		return null;
     	}

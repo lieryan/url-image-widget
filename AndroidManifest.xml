@@ -35,6 +35,12 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/url_image_appwidget_info_2x2"/>
         </receiver>
+        <receiver android:name="com.lieryan.urlimagewidget.URLImageAppWidgetProvider$Size_4_4" android:label="URL Image Widget 4x4">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/url_image_appwidget_info_4x4"/>
+        </receiver>
         
         
         <activity android:name="com.lieryan.urlimagewidget.URLImageAppWidgetConfiguration">
