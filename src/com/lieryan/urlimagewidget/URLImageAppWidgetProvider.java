@@ -2,13 +2,13 @@ package com.lieryan.urlimagewidget;
 
 import java.io.InputStream;
 
-import com.lieryan.urlimagewidget.R;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class URLImageAppWidgetProvider extends AppWidgetProvider {
@@ -30,7 +30,6 @@ public class URLImageAppWidgetProvider extends AppWidgetProvider {
 			String url = urls.getString("url_" + id, "");
 			update(context, appWidgetManager, id, url);
 		}	
-		
 	}
     
     @Override
@@ -44,36 +43,26 @@ public class URLImageAppWidgetProvider extends AppWidgetProvider {
 		}
 		
 		urls_editor.commit();
-		
     }
 
 	public static void update(final Context context, final AppWidgetManager appWidgetManager, final int id, final String url) {
 		new Thread() {
 			public void run() {
-				Bitmap img = getBitmapFromUrl(url);
-				if (img != null) {
-					RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.main);
-					views.setImageViewBitmap(R.id.img, img);
-					appWidgetManager.updateAppWidget(id, views);	
-				}
+				Bitmap img = getBitmapFromUrl(context, url);
+				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.main);
+				views.setImageViewBitmap(R.id.img, img);
+				appWidgetManager.updateAppWidget(id, views);	
 			}
 		}.start();
 	}
 	
-    private static Bitmap getBitmapFromUrl(final String url) {
-    	try {
-    		InputStream stream = (InputStream) new java.net.URL(url).getContent();
-//    		if (stream.markSupported()) {
-//    			byte[] buffer = new byte[64000];
-//	    		stream.mark(64000);
-//	    		stream.read(buffer);
-//	    		System.out.println(buffer);
-//	    		stream.reset();
-//    		}
-    		return BitmapFactory.decodeStream(stream);
-    	} catch (Exception e) {
-    		return null;
-    	}
-    	
+    private static Bitmap getBitmapFromUrl(Context context, final String url) {
+		try {
+			Log.d(TAG, "Downloading image from  url: " + url);
+			return BitmapFactory.decodeStream((InputStream) new java.net.URL(url).getContent());
+		} catch (Exception e) {
+			Log.d(TAG, "Image cannot be loaded, using default image: " + e);
+			return BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
+		}	
     }
 }
