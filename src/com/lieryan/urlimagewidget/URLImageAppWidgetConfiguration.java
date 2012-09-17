@@ -1,6 +1,5 @@
 package com.lieryan.urlimagewidget;
 
-import com.lieryan.urlimagewidget.R;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
