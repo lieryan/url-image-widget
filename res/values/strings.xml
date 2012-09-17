@@ -5,5 +5,9 @@
     <string name="add_widget">Add Widget</string>
     <string name="default_url">http://dl.dropbox.com/s/16qohdvaig12o86/droid.png</string>
     <string name="img_content_description">URLImageWidget image area</string>
-
+	<string name="widget_name_1x1">URL Image Widget 1x1</string>
+	<string name="widget_name_1x2">URL Image Widget 1x2</string>
+	<string name="widget_name_1x4">URL Image Widget 1x4</string>
+	<string name="widget_name_2x2">URL Image Widget 2x2</string>
+	<string name="widget_name_4x4">URL Image Widget 4x4</string>
 </resources>
