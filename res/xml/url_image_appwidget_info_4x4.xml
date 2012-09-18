@@ -4,8 +4,8 @@
     android:updatePeriodMillis="3600000" 
     android:initialLayout="@layout/main" 
     android:configure="com.lieryan.urlimagewidget.URLImageAppWidgetConfiguration" 
-    android:minWidth="250dip" 
-    android:minHeight="250dip" 
+    android:minWidth="250dp" 
+    android:minHeight="250dp" 
     >
     
 
